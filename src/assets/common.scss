@@ -1,0 +1,78 @@
+/* 通用样式定义 */
+
+// 最大750, 超过750整个屏幕居中
+@mixin max-screen-center {
+  max-width: $max-screen-width;
+  display: block;
+  margin: 0 auto;
+}
+
+@mixin border-1px($color: $btn-border, $radius: 10px) {
+  &::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 0;
+    left: 0;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    pointer-events: none;
+    border: 1px solid $color;
+    border-radius: $radius * 2;
+  }
+}
+
+.zred {
+  color: $red-main;
+}
+
+// 弹框设置最大宽度
+.z-dialog {
+  max-width: $max-dialog-width;
+}
+
+// 全局容器通用样式
+.main {
+  @include max-screen-center;
+
+  position: relative;
+}
+
+//文字进制换行，超出部分...
+@mixin text-nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.click-x-fade {
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.click-x-bg {
+  &:active {
+    background: #f0f0f0 !important;
+  }
+}
+
+// 将一个元素的伪元素放大，从而扩大该元素的点击区域。
+@mixin expand-click-area($scale: 2) {
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale($scale);
+  }
+}
+
+// @include size(90px); 宽高都是90px
+// @include size(90px, 100px); 宽90px，高100px。
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
