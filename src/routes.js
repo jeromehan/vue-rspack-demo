@@ -1,5 +1,8 @@
-import Router from "vue-router";
-export default new Router({
+import Vue from "vue";
+import VueRouter from "vue-router";
+Vue.use(VueRouter);
+
+export default new VueRouter({
   routes: [
     {
       path: "/hello-world",

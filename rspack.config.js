@@ -40,10 +40,12 @@ const config = {
       {
         test: /\.less$/,
         use: ["vue-style-loader", "css-loader", "less-loader"],
+        type: 'css'
       },
       {
         test: /\.css$/,
         use: ["vue-style-loader", "css-loader", "postcss-loader"],
+        type: 'css'
       },
       {
         test: /\.scss$/,
@@ -63,6 +65,7 @@ const config = {
             },
           },
         ],
+        type: 'css'
       },
       {
         test: /\.(png|jpe?g|gif|svg)/i,
@@ -86,13 +89,15 @@ const config = {
     ],
   },
   experiments: {
-    css: false,
+    css: true,
   },
   output: {
     clean: true,
     publicPath,
     filename: "static/js/[name].[contenthash:8].js",
     chunkFilename: "static/js/[name].[contenthash:8].js",
+    cssFilename: "static/css/[name].[contenthash:8].css",
+    cssChunkFilename: "static/css/[name].[contenthash:8].css"
   },
 };
 module.exports = config;
